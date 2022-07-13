@@ -11,8 +11,17 @@
 
 {% block content %}
     <div class="row text-center">
-        <div class="col-4" id="bike-cat">Bikes</div>
-        <div class="col-4" id="parts-cat">Parts</div>
-        <div class="col-4" id="clothing-cat">Clothing</div>
+        <div class="col-4 category-container" id="bike-cat">
+            <img src="/media/bikes.png" class="test" alt="">
+            <div class="category-text">Bikes</div>
+        </div>
+        <div class="col-4 category-container" id="parts-cat">
+            <img src="/media/bikeparts.png" class="test" alt="">
+            <div class="category-text">Parts</div>
+        </div>
+        <div class="col-4 category-container" id="clothing-cat">
+            <img src="/media/bikeclothes.png" class="test" alt="">
+            <div class="category-text">Clothing</div>
+        </div>
     </div>
 {% endblock %}

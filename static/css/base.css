@@ -1,10 +1,41 @@
-/* #clothing-cat {
-  background: url('/media/bikeclothes.png') no-repeat center center fixed;
-  height: 500px;
+/* #bike-cat {
+  background: url('/media/bikes.png') fixed;
+}
+
+#parts-cat {
+  background: url('/media/bikeparts.png') fixed;
+}
+
+#clothing-cat {
+  background: url('/media/bikeclothes.png') fixed;
 } */
 
 .logo {
   border-radius: 50%;
+}
+
+/* .category-container {
+  height: auto;
+  width: 300px;
+} */
+
+.test {
+  width: 100%;
+  height: 700px;
+  
+}
+
+.test:hover {
+  filter: opacity(0.50);
+}
+
+.category-text {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  filter: grayscale(100%);
 }
 
 /* -------------------------------- Media Queries */
