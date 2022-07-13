@@ -1,4 +1,11 @@
+/* #clothing-cat {
+  background: url('/media/bikeclothes.png') no-repeat center center fixed;
+  height: 500px;
+} */
 
+.logo {
+  border-radius: 50%;
+}
 
 /* -------------------------------- Media Queries */
 
