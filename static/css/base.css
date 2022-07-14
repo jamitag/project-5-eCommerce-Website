@@ -19,13 +19,13 @@
   width: 300px;
 } */
 
-.test {
+.category {
   width: 100%;
   height: 700px;
   
 }
 
-.test:hover {
+.category-container:hover {
   filter: opacity(0.50);
 }
 
@@ -38,7 +38,7 @@
   font-weight: 900;
   font-size: xx-large;
   color: white;
-  filter: drop-shadow(0 0 0.75rem crimson);
+  filter: drop-shadow(0 0 0.75rem rgb(10, 112, 237));
 }
 
 /* -------------------------------- Media Queries */
