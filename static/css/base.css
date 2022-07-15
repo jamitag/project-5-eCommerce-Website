@@ -1,23 +1,6 @@
-/* #bike-cat {
-  background: url('/media/bikes.png') fixed;
-}
-
-#parts-cat {
-  background: url('/media/bikeparts.png') fixed;
-}
-
-#clothing-cat {
-  background: url('/media/bikeclothes.png') fixed;
-} */
-
 .logo {
   border-radius: 50%;
 }
-
-/* .category-container {
-  height: auto;
-  width: 300px;
-} */
 
 .category {
   width: 100%;
