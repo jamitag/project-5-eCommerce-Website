@@ -11,17 +11,24 @@
 
 {% block content %}
     <div class="row text-center m-1">
+        
         <div class="col-4 category-container" id="bike-cat">
-            <img src="/media/bikes.png" class="category" alt="">
-            <div class="category-text">Bikes</div>
+            <a href="{% url 'products' %}?category=Bikes">
+                <img src="/media/bikes.png" class="category" alt="">
+                <div class="category-text">Bikes</div>
+            </a>
         </div>
         <div class="col-4 category-container" id="parts-cat">
-            <img src="/media/bikeparts.png" class="category" alt="">
-            <div class="category-text">Parts</div>
+            <a href="{% url 'products' %}?category=Parts">
+                <img src="/media/bikeparts.png" class="category" alt="">
+                <div class="category-text">Parts</div>
+            </a>
         </div>
         <div class="col-4 category-container" id="clothing-cat">
-            <img src="/media/bikeclothes.png" class="category" alt="">
-            <div class="category-text">Clothing</div>
+            <a href="{% url 'products' %}?category=Clothing">
+                <img src="/media/bikeclothes.png" class="category" alt="">
+                <div class="category-text">Clothing</div>
+            </a>
         </div>
     </div>
 {% endblock %}
