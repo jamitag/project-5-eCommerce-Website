@@ -45,6 +45,7 @@
                 <a class="dropdown-item" href="#">Bikes</a>
                 <a class="dropdown-item" href="#">Parts</a>
                 <a class="dropdown-item" href="#">Clothing</a>
+                <a class="dropdown-item" href="{% url 'products' %}">Everything</a>
                 {% if request.user.is_superuser %}
                   <div class="dropdown-divider"></div>
                   <a href="" class="dropdown-item">Product Management</a>
