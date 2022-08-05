@@ -95,8 +95,8 @@ SITE_ID=1
 # ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 # ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 # ACCOUNT_USERNAME_MIN_LENGTH = 4
-# LOGIN_URL = '/accounts/login/'
-# LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'cycle_store.wsgi.application'
 
@@ -129,6 +129,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# session cookie age set to 30 days
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
 
 
 # Internationalization

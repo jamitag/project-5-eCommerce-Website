@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">
+            You have been logged out
+        </h5>
+        <p class="card-text">
+            Thank you for visiting the Cycle shop
+        </p>
+        <br>
+        <hr>
+        <a href="{% url 'login' %}" class="btn btn-primary">
+            Sign in again
+        </a>
+    </div>
+
+   </div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'home' %}">
+      <img class="logo" alt="logo" src="/media/logo.png"
+        width="120" height="120">
+    </a>
+    
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Explore
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'products' %}?category=Bikes">Bikes</a>
+            <a class="dropdown-item" href="{% url 'products' %}?category=Parts">Parts</a>
+            <a class="dropdown-item" href="{% url 'products' %}?category=Clothing">Clothing</a>
+            <a class="dropdown-item" href="{% url 'products' %}">Everything</a>
+            {% if request.user.is_superuser %}
+              <div class="dropdown-divider"></div>
+              <a href="" class="dropdown-item">Product Management</a>
+            {% endif %}
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'products' %}">
+        <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search product" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <ul class="navbar-nav mr-auto ml-5">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Account</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#"><i class="fas fa-shopping-basket fa-lg"></i></a>
+          <p class="my-0">
+            {% if grand_total %}
+                ${{ grand_total|floatformat:2 }}
+            {% else %}
+                £0.00
+            {% endif %}
+        </p>
+        </li>
+      </ul> 
+    </div>
+  </nav>
