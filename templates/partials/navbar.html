@@ -30,9 +30,18 @@
         </button>
       </form>
       <ul class="navbar-nav mr-auto ml-5">
+        {% if user.is_authenticated %}
         <li class="nav-item active">
           <a class="nav-link" href="#">Account</a>
         </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'logout'%}">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'login' %}">Log in</a>
+        </li>
+        {% endif %}
         <li class="nav-item active">
           <a class="nav-link" href="#"><i class="fas fa-shopping-basket fa-lg"></i></a>
           <p class="my-0">

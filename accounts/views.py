@@ -10,9 +10,15 @@ class RegisterView(View):
     initial = {'key': 'value'}
     template_name = 'accounts/register.html'
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect(to='/')
+        return super(RegisterView, self).dispatch(request, *args, **kwargs)
+
     def get(self, request, *args, **kwargs):
         form = self.form_class(initial = self.initial)
         return render(request, self.template_name, {'form': form})
+
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
