@@ -32,7 +32,7 @@
       <ul class="navbar-nav mr-auto ml-5">
         {% if user.is_authenticated %}
         <li class="nav-item active">
-          <a class="nav-link" href="#">Account</a>
+          <a class="nav-link" href="{% url 'users-profile' %}">Account</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'logout'%}">Logout</a>

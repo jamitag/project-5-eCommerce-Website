@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.views import View
 from .forms import RegisterForm, LoginForm
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.decorators import login_required
 
 
 class RegisterView(View):
@@ -45,3 +46,8 @@ class CustomLoginView(LoginView):
         # else browser session will be as long as the session cookie time "SESSION_COOKIE_AGE" defined in settings.py
         return super(CustomLoginView, self).form_valid(form)
 
+
+
+def profile(request):
+    return render(request, 'accounts/profile.html')
+    
