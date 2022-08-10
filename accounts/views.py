@@ -70,4 +70,4 @@ def profile(request):
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'accounts/change_password.html'
     success_message = "Successfully changed password"
-    success_url = reverse_lazy('/')
+    success_url = reverse_lazy('home')
