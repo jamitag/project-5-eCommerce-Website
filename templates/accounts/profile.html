@@ -2,8 +2,52 @@
 {% block content %}
 <br><br><br><br><br>
 <div class="row my-3 p-3">
-    <h1>
-        Hello {{user.username}}
-    </h1>
+   <img src="{{user.profile.avatar.url}}"  class="rounded-circle account-img" style="cursor:pointer;" alt="">
 </div>
+
+{% if user_form.errors %}
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <div class="form_errors">
+            {% for key, value in user_form.errors.items %}
+            <strong>
+                {{value}}
+            </strong>
+            {% endfor %}
+        </div>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            &times;
+
+        </button>
+    </div>
+{% endif %}
+
+<div class="form-content">
+    <form method="POST" enctype="multipart/form-data"> <!-- enctype="multipart/form-data" for image field -->
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="small mb-1">Username:</label>
+                    {{user_form.username}}
+                    <label class="small mb-1">Email:</label>
+                    {{user_form.email}}
+                </div>
+                <div class="form-group">
+                    <label class="small mb-1">Change Avatar:</label>
+                    {{profile_form.avatar}}
+                </div>
+                <label class="small mb-1">Bio:</label>
+                {{profile_form.bio}}
+            </div>
+        </div>
+        <br><br>
+        <button type="submit" class="btn btn-dark btn-lg">
+            Save Changes
+        </button>
+        <button type="reset" class="btn btn-dark btn-lg">
+            Reset
+        </button>
+    </form>
+</div>
+
 {% endblock %}
