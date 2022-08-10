@@ -2,8 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views import View
 from .forms import RegisterForm, LoginForm, UpdateUserForm, UpdateProfileForm
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.contrib.auth.decorators import login_required
+
+from django.urls import reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 class RegisterView(View):
@@ -63,3 +66,8 @@ def profile(request):
         profile_form = UpdateProfileForm(instance=request.user.profile)
     return render(request, 'accounts/profile.html', {'user_form': user_form, 'profile_form': profile_form})
     
+
+class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
+    template_name = 'accounts/change_password.html'
+    success_message = "Successfully changed password"
+    success_url = reverse_lazy('/')
