@@ -33,12 +33,17 @@
       </form>
       <ul class="navbar-nav mr-auto ml-5">
         {% if user.is_authenticated %}
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'users-profile' %}">Account</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'logout'%}">Logout</a>
-        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user-tie"></i>&nbsp;&nbsp; {{request.user.username}}</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'users-profile' %}">Profile</a>
+              <a class="dropdown-item" href="">Order</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+          </div>
+      </li>
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'cart' %}"><i class="fas fa-shopping-cart"></i>
             <span class="badge badge-warning">{{request.user|cart_total}}</span>
@@ -52,3 +57,5 @@
         {% endif %}
     </div>
   </nav>
+
+  
