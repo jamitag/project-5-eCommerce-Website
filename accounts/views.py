@@ -19,6 +19,7 @@ class RegisterView(View):
             return redirect(to='/')
         return super(RegisterView, self).dispatch(request, *args, **kwargs)
 
+
     def get(self, request, *args, **kwargs):
         form = self.form_class(initial = self.initial)
         return render(request, self.template_name, {'form': form})
