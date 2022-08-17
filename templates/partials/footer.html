@@ -1,0 +1,102 @@
+<br><br><br><br><br><br>
+
+<footer class="text-center text-lg-start bg-white text-muted">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+      <!-- Left -->
+      <div class="me-5 d-none d-lg-block">
+        <span>Get connected with us on social networks:</span>
+      </div>
+      <!-- Left -->
+  
+      <!-- Right -->
+      <div>
+        <a href="https://facebook.com" class="me-4 link-grayish" target="_blank" rel="noopener" aria-label="Visit our Facebook page (Opens in new page)">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com" class="me-4 link-grayish" target="_blank" rel="noopener" aria-label="Visit our Twitter page (Opens in new page)">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://strava.com" class="me-4 link-grayish" target="_blank" rel="noopener" aria-label="Visit our Strava page (Opens in new page)">
+          <i class="fab fa-strava"></i>
+        </a>   
+      </div>
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+  
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+                Cycle Shop
+            </h6>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Products
+            </h6>
+            <p>
+              <a href="{% url 'products' %}?category=Bikes" class="text-reset">Bikes</a>
+            </p>
+            <p>
+              <a href="{% url 'products' %}?category=Parts" class="text-reset">Parts</a>
+            </p>
+            <p>
+              <a href="{% url 'products' %}?category=Clothing" class="text-reset">Clothing</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Useful links
+            </h6>
+            {% if user.is_authenticated %}
+            <p>
+              <a href="{% url 'users-profile' %}" class="text-reset">Account</a>
+            </p>
+            {% else %}
+            <p>
+                <a href="{% url 'login' %}" class="text-reset">Login</a>
+            </p>
+            {% endif %}
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+            <p><i class="fas fa-home me-3 text-grayish"></i> Edinburgh, UK</p>
+            <p>
+              <i class="fas fa-envelope me-3 text-grayish"></i>
+              bikeshop@example.com
+            </p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+      © 2022:
+      <p class="text-reset fw-bold">Bike Shop</p>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
