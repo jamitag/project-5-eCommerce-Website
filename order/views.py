@@ -74,3 +74,57 @@ def remove_from_cart(request, pk):
         messages.info(request, "No active order")
         return redirect('home')
 
+
+@login_required
+def increase_cart(request, pk):
+    item = get_object_or_404(Product, pk=pk)
+    order_qs = Order.objects.filter(user=request.user, ordered=False)
+
+    if order_qs.exists():
+        order = order_qs[0]
+        if order.orderItems.filter(item=item).exists():
+            order_item = Cart.objects.filter(item=item, user=request.user, purchased=False)
+            order_item = order_item[0]
+            if order_item.quantity >= 1:
+                order_item.quantity += 1
+                order_item.save()
+                messages.info(request, f"{item.name} added")
+                return redirect('cart')
+
+        else:
+            messages.info(request, f"{item.name} is not in cart")
+            return redirect('cart')
+
+    else:
+        messages.info(request, "No active order")
+        return redirect('home')
+
+
+@login_required
+def decrease_cart(request, pk):
+    item = get_object_or_404(Product, pk=pk)
+    order_qs = Order.objects.filter(user=request.user, ordered=False)
+
+    if order_qs.exists():
+        order = order_qs[0]
+        if order.orderItems.filter(item=item).exists():
+            order_item = Cart.objects.filter(item=item, user=request.user, purchased=False)
+            order_item = order_item[0]
+            if order_item.quantity > 1:
+                order_item.quantity -= 1
+                order_item.save()
+                messages.info(request, f"{item.name} removed")
+                return redirect('cart')
+            else:
+                order.orderItems.remove(order_item)
+                order_item.delete()
+                messages.warning(request, f"{item.name} removed from your cart")
+                return redirect('cart')
+
+        else:
+            messages.info(request, f"{item.name} is not in your cart")
+            return redirect('home')
+
+    else:
+        messages.info(request, "No active order")
+        return redirect('home')
