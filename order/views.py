@@ -48,5 +48,29 @@ def cart_view(request):
         order = orders[0]
         return render(request, 'order/cart.html', context={'carts':carts, 'order':order})
     else:
-        messages.warning(request, 'You don"t have any items in your cart')
+        messages.warning(request, 'No items in your cart')
         return redirect('/')
+
+
+@login_required
+
+def remove_from_cart(request, pk):
+    item = get_object_or_404(Product, pk=pk)
+    order_qs = Order.objects.filter(user=request.user, ordered=False)
+
+    if order_qs.exists():
+        order = order_qs[0]
+        if order.orderItems.filter(item=item).exists():
+            order_item = Cart.objects.filter(item=item, user=request.user, purchased=False)
+            order_item = order_item[0]
+            order.orderItems.remove(order_item)
+            order_item.delete()
+            messages.warning(request, "Item removed from cart")
+            return redirect('cart')
+        else:
+            messages.info(request, "Item is not in cart")
+            return redirect('home')
+    else:
+        messages.info(request, "No active order")
+        return redirect('home')
+

@@ -36,15 +36,16 @@
     <header class="container-fluid fixed-top">
      {% include 'partials/navbar.html'%}
     </header>
-    {% include 'partials/alert.html'%}
-    {% include 'partials/footer.html'%}
-
 
     {% block page_header %}
     {% endblock %}
 
+    {% include 'partials/alert.html'%}
+
     {% block content %}
     {% endblock %}
+
+    {% include 'partials/footer.html'%}
 
     {% block postloadjs %}
     {% endblock %}

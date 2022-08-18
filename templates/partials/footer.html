@@ -1,28 +1,56 @@
-<br><br><br><br><br><br>
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+<style>
+  #socials {
+    color: gray;
+    font-size: 2em;
+    padding: 5px;
+  }
+</style>
 
 <footer class="text-center text-lg-start bg-white text-muted">
     <!-- Section: Social media -->
-    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-      <!-- Left -->
-      <div class="me-5 d-none d-lg-block">
-        <span>Get connected with us on social networks:</span>
-      </div>
-      <!-- Left -->
+    <!-- Section: Form -->
+    <section class="">
+        <form action="">
+          <!--Grid row-->
+          <div class="row d-flex justify-content-center">
+            <!--Grid column-->
+            <div class="col-auto">
+              <p class="pt-2">
+                <strong>Sign up for our newsletter</strong>
+              </p>
+            </div>
+            <!--Grid column-->
   
-      <!-- Right -->
-      <div>
-        <a href="https://facebook.com" class="me-4 link-grayish" target="_blank" rel="noopener" aria-label="Visit our Facebook page (Opens in new page)">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://twitter.com" class="me-4 link-grayish" target="_blank" rel="noopener" aria-label="Visit our Twitter page (Opens in new page)">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="https://strava.com" class="me-4 link-grayish" target="_blank" rel="noopener" aria-label="Visit our Strava page (Opens in new page)">
-          <i class="fab fa-strava"></i>
-        </a>   
-      </div>
-      <!-- Right -->
-    </section>
+            <!--Grid column-->
+            <div class="col-md-5 col-12 mt-2">
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <input type="email" id="email" class="form-control" placeholder="Email address">
+              </div>
+            </div>
+            <!--Grid column-->
+  
+            <!--Grid column-->
+            <div class="col-auto">
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-dark mb-4">
+                Subscribe
+              </button>
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </form>
+      </section>
+      <!-- Section: Form -->
     <!-- Section: Social media -->
   
     <!-- Section: Links  -->
@@ -36,6 +64,20 @@
             <h6 class="text-uppercase fw-bold mb-4">
                 Cycle Shop
             </h6>
+            <span>Visit us</span>
+            <div>
+                <a href="https://facebook.com" class="me-4 link-grayish" target="_blank" rel="noopener" aria-label="Visit our Facebook page (Opens in new page)">
+                    <i id="socials" class="fab fa-facebook"></i>
+                </a>
+                <a href="https://twitter.com" class="me-4 link-grayish" target="_blank" rel="noopener" aria-label="Visit our Twitter page (Opens in new page)">
+                    <i id="socials" class="fab fa-twitter"></i>
+                </a>
+                <a href="https://strava.com" class="me-4 link-grayish" target="_blank" rel="noopener" aria-label="Visit our Strava page (Opens in new page)">
+                    <i id="socials" class="fab fa-strava"></i>
+                </a>
+            </div>
+            
+              <!-- Section: Form -->
           </div>
           <!-- Grid column -->
   
