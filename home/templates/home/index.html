@@ -8,27 +8,54 @@
         </div>
     </div>
 {% endblock %}
+<style>
+    .card-product .category {
+        border-radius: 3px 3px 0 0;
+        overflow: hidden;
+        position: relative;
+        height: 420px;
+        text-align: center;
+    }
+
+    /* .card-product .category img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: cover;
+    }
+
+    .card-product {
+        margin-right: 0.5rem;
+    } */
+</style>
 
 {% block content %}
-    <div class="row text-center m-1">
-        
-        <div class="col-4 category-container" id="bike-cat">
-            <a href="{% url 'products' %}?category=Bikes">
-                <img src="/media/bikes.png" class="category" alt="">
-                <div class="category-text">Bikes</div>
-            </a>
-        </div>
-        <div class="col-4 category-container" id="parts-cat">
-            <a href="{% url 'products' %}?category=Parts">
-                <img src="/media/bikeparts.png" class="category" alt="">
-                <div class="category-text">Parts</div>
-            </a>
-        </div>
-        <div class="col-4 category-container" id="clothing-cat">
-            <a href="{% url 'products' %}?category=Clothing">
-                <img src="/media/bikeclothes.png" class="category" alt="">
-                <div class="category-text">Clothing</div>
-            </a>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-4 col-sm-12 col-lg-4" id="bikes-cat">
+                <figure class="card card-product">
+                    <a href="{% url 'products' %}?category=Bikes">
+                        <img src="/media/bikes.png" class="category" alt="bikes category" style="width: auto; height: 620px;">
+                        <div class="category-text">Bikes</div>
+                    </a>
+                </figure>
+            </div>
+            <div class="col-md-6 col-sm-12 col-lg-3" id="parts-cat">
+                <figure class="card card-product">
+                <a href="{% url 'products' %}?category=Parts">
+                    <img src="/media/bikeparts.png" class="category" alt="parts category" style="width: auto; height: 620px;">
+                    <div class="category-text">Parts</div>
+                </a>
+                </figure>
+            </div>
+            <div class="col-md-6 col-sm-12 col-lg-3" id="clothing-cat">
+                <figure class="card card-product">
+                <a href="{% url 'products' %}?category=Clothing">
+                    <img src="/media/bikeclothes.png" class="category" alt="clothing category" style="width: auto; height: 620px;">
+                    <div class="category-text">Clothing</div>
+                </a>
+            </figure>
+            </div>
         </div>
     </div>
 {% endblock %}
