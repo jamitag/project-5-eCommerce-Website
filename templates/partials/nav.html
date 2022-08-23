@@ -16,9 +16,9 @@
               Explore
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'products' %}?category=Bikes">Bikes</a>
-              <a class="dropdown-item" href="{% url 'products' %}?category=Parts">Parts</a>
-              <a class="dropdown-item" href="{% url 'products' %}?category=Clothing">Clothing</a>
+              <a class="dropdown-item" href="{% url 'products' %}?category=bikes">Bikes</a>
+              <a class="dropdown-item" href="{% url 'products' %}?category=parts">Parts</a>
+              <a class="dropdown-item" href="{% url 'products' %}?category=clothing">Clothing</a>
               <a class="dropdown-item" href="{% url 'products' %}">Everything</a>
               {% if request.user.is_superuser %}
                 <div class="dropdown-divider"></div>
