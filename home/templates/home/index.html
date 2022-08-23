@@ -1,13 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
-{% endblock %}
 <style>
     .card-product .category {
         border-radius: 3px 3px 0 0;
@@ -29,10 +22,10 @@
 </style>
 
 {% block content %}
-
+<br><br><br>
     <div class="container my-5">
         <div class="row">
-            <div class="col-md-4 col-sm-12 col-lg-4" id="bikes-cat">
+            <div class="col-md-6 col-sm-12 col-lg-4" id="bikes-cat">
                 <figure class="card card-product">
                     <a href="{% url 'products' %}?category=Bikes">
                         <img src="/media/bikes.png" class="category" alt="bikes category" style="width: auto; height: 620px;">
@@ -40,7 +33,7 @@
                     </a>
                 </figure>
             </div>
-            <div class="col-md-6 col-sm-12 col-lg-3" id="parts-cat">
+            <div class="col-md-6 col-sm-12 col-lg-4" id="parts-cat">
                 <figure class="card card-product">
                 <a href="{% url 'products' %}?category=Parts">
                     <img src="/media/bikeparts.png" class="category" alt="parts category" style="width: auto; height: 620px;">
@@ -48,7 +41,7 @@
                 </a>
                 </figure>
             </div>
-            <div class="col-md-6 col-sm-12 col-lg-3" id="clothing-cat">
+            <div class="col-md-6 col-sm-12 col-lg-4" id="clothing-cat">
                 <figure class="card card-product">
                 <a href="{% url 'products' %}?category=Clothing">
                     <img src="/media/bikeclothes.png" class="category" alt="clothing category" style="width: auto; height: 620px;">
