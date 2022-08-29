@@ -20,10 +20,6 @@
               <a class="dropdown-item" href="{% url 'products' %}?category=parts">Parts</a>
               <a class="dropdown-item" href="{% url 'products' %}?category=clothing">Clothing</a>
               <a class="dropdown-item" href="{% url 'products' %}">Everything</a>
-              {% if request.user.is_superuser %}
-                <div class="dropdown-divider"></div>
-                <a href="" class="dropdown-item">Product Management</a>
-              {% endif %}
             </div>
           </li>
           <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'products' %}">
@@ -46,11 +42,10 @@
           <i class="fas fa-user-tie"></i>&nbsp;&nbsp; {{request.user.username}}</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{% url 'users-profile' %}">Profile</a>
-              <a class="dropdown-item" href="">Order</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
           </div>
-      </li>
+        </li>
         {% else %}
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'login' %}">Login</a>
