@@ -35,9 +35,14 @@ class UpdateUserForm(forms.ModelForm):
 
 class UpdateProfileForm(forms.ModelForm):
     avatar = forms.ImageField(widget=forms.FileInput(attrs={'class':'form-control-file'}))
-    bio = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control', 'rows':5}))
+    full_name = forms.CharField(max_length=255, required=False, widget=forms.TextInput(attrs={'placeholder':'Full Name', 'class': 'form-control'}))
+    bio = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control', 'placeholder':'Bio', 'rows':5}))
+    address_1 = forms.CharField(max_length=300, widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder':'Address', 'rows':1}))
+    city = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'City'}))
+    country = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Country'}))
+    post_code = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Post Code'}))
 
     class Meta:
         model = Profile
-        fields = ['avatar', 'bio']
+        fields = ['avatar', 'full_name', 'bio', 'address_1', 'city', 'country', 'post_code']
     
