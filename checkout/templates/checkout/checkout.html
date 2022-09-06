@@ -41,7 +41,7 @@
             </div>
             <br><br>
             {% if saved_address.is_fully_filled %}
-            <a href="{% url 'payment' %}" class="btn btn-warning btn-md">Make Payment</a>
+            <a href="{% url 'payment' %}" class="btn btn-warning btn-md" id="checkout-button">Make Payment</a>
             {% else %}
             <div class="alert alert-info">
                 <p>
@@ -52,5 +52,29 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    var stripe = Stripe('pk_test_51LY5f1FHBngm0aT5X9RyaGZAMSkscQ2i95jph83HN9TTVptbkE6SqOrvtkf4h8ndJLGdGM58uTE6aS896Aey3CLC00lyM9WD9v');
+    var checkoutButton = document.getElementById('checkout-button');
+    checkoutButton.addEventListener('click', function() {
+        fetch('/create-checkout-session/', {
+            method: 'POST',
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(session) {
+            return stripe.redirectToCheckout({sessionId:session.id});
+        })
+        .then(function(result) {
+            if (result.error) {
+                alert(result.error.message);
+            }
+        })
+        .catch(function(error) {
+            console.error('Error:',error);
+        });
+    });
+</script>
 
 {% endblock %}
