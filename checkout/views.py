@@ -80,16 +80,25 @@ def checkout(request):
 # def cancel(request):
 #     return render(request, 'checkout/cancel.html')
 
-
+from decimal import Decimal
 stripe.api_key = settings.STRIPE_SECRET_KEY
-YOUR_DOMAIN = 'https://8000-jamitag-project5-g004aetgzau.ws-eu64.gitpod.io'
+YOUR_DOMAIN = 'https://8000-jamitag-project5-g004aetgzau.ws-eu64.gitpod.io/'
 
 class CreateCheckoutSessionView(generic.View):
     def post(self, *args, **kwargs):
         # host = self.request.get_host()
 
-        order_id = self.request.POST.get('order-id')
-        order = get_object_or_404(Order, orderId=order_id)
+        order_qs = Order.objects.filter(user=self.request.user, ordered=False)
+        order_items = order_qs[0].orderItems.all()
+        order_total = order_qs[0].get_totals()
+
+        # order_id = self.request.POST.get('order-id')
+        # order = get_object_or_404(Order, orderId=order_id)
+        # order = Order.objects.get(orderId=order_id)
+        # order_qs = Order.objects.filter(user=self.request.user, ordered=False, orderId=order_id)
+        # order_items = order_qs[0].orderItems.all()
+        order_items_count = order_qs[0].orderItems.count()
+        # order_total = order_qs[0].get_totals()
 
         checkout_session = stripe.checkout.Session.create(
             payment_method_types = ['card'],
@@ -97,19 +106,20 @@ class CreateCheckoutSessionView(generic.View):
                 {
                     'price_data': {
                         'currency':'GBP',
-                        'unit_amount': Decimal(order.get_totals() * 100),
+                        'unit_amount': Decimal(order_total * 100),
+                        # 'unit_amount': 1000,
                         'product_data': {
-                            'name': order.id,
+                            'name': 'order.id',
                         },
                     },
-                    'quantity':1,
+                    'quantity':order_items_count,
                 },
             ],
             mode = 'payment',
             # success_url = "http://{}{}".format(host, reverse('payment-success')),
             # cancel_url = "http://{}{}".format(host, reverse('payment-cancel')),
-            success_url=YOUR_DOMAIN + '/payment/payment-success',
-            cancel_url=YOUR_DOMAIN + '/payment/payment-cancel',
+            success_url=YOUR_DOMAIN + 'payment/payment-success',
+            cancel_url=YOUR_DOMAIN + 'payment/payment-cancel',
         )
 
         return redirect(checkout_session.url, code=303)
