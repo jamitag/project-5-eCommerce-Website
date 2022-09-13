@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+from decouple import config
 from pathlib import Path
 # import django_heroku
 
@@ -22,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ba^&-^o%&l&#859t6^#p=n5ih#3)vvig)o!4v=w2%4*5p6hi2v'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -95,13 +96,6 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID=1
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-# ACCOUNT_EMAIL_REQUIRED = True
-# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-# ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
-# ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/'
 
@@ -161,14 +155,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # STATIC_ROOT = (os.path.join(BASE_DIR, 'static_files'),)
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-# STRIPE_PUBLIC_KEY = 'pk_test_51LY5f1FHBngm0aT5X9RyaGZAMSkscQ2i95jph83HN9TTVptbkE6SqOrvtkf4h8ndJLGdGM58uTE6aS896Aey3CLC00lyM9WD9v'
 
-# from decouple import config
-# STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
-STRIPE_PUBLIC_KEY = 'pk_test_51LY5f1FHBngm0aT5X9RyaGZAMSkscQ2i95jph83HN9TTVptbkE6SqOrvtkf4h8ndJLGdGM58uTE6aS896Aey3CLC00lyM9WD9v'
-STRIPE_SECRET_KEY = 'sk_test_51LY5f1FHBngm0aT5E1PZ8QUxSwVJqONLOQcSQGuOnmkTZBUMnFe5YgRFQlL1gMqvUxudrc68Z7klSdL3D1yCLKXS001gQ1J8W4'
-STRIPE_WEBHOOK_SECRET = 'sk_test_51LY5f1FHBngm0aT5E1PZ8QUxSwVJqON'
-
+STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

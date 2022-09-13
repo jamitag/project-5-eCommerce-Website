@@ -41,13 +41,9 @@
             </div>
             <br><br>
             {% if saved_address.is_fully_filled %}
-            <form action="{% url 'create-checkout-session' %}" method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="order-id" value="{{order.id}}">
-                <button type="submit" id="checkout-button" class="btn btn-warning btn-mb">
-                    Make Payment
-                </button>
-            </form>
+            <a href="{% url 'payment2' %}" class="btn btn-warning">
+                Proceed to checkout
+            </a>
             {% else %}
             <div class="alert alert-info">
                 <p>
