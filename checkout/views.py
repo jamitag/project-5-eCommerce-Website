@@ -18,7 +18,8 @@ from django.utils.crypto import get_random_string
 @login_required
 def checkout(request):
     """
-    function purpose
+    Saving address
+    Order items and order total through context dictionary
     """
     saved_address = BillingAddress.objects.get_or_create(user=request.user)
     saved_address = saved_address[0]
@@ -38,9 +39,17 @@ def checkout(request):
     order_total = order_qs[0].get_totals()
     return render(request, 'checkout/checkout.html', context={'form':form, 'order_items':order_items, 'order_total':order_total, 'saved_address':saved_address})
 
+
+"""
+Stripe secret key from settings.py file
+"""
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
-def payment2(request):
+def payment(request):
+    """
+    Stripe public key from settings.py file
+    Get total cost from order items
+    """
     key = settings.STRIPE_PUBLIC_KEY
     order_qs = Order.objects.filter(user=request.user, ordered=False)
     order_total = order_qs[0].get_totals()
@@ -56,6 +65,10 @@ def payment2(request):
 
     
 def charge(request):
+    """
+    Once payemnt processed, order id and payment id is saved
+    Items will be removed from cart
+    """
     order = Order.objects.get(user=request.user, ordered=False)
     orderitems = order.orderItems.all()
     order_total = order.get_totals()
