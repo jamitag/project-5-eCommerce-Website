@@ -3,6 +3,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import Profile
 
+
+"""
+Registration form for new users to sign up
+"""
 class RegisterForm(UserCreationForm):
     first_name = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'placeholder':'First Name', 'class': 'form-control'}))
     last_name = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'placeholder':'Last Name', 'class': 'form-control'}))
@@ -15,6 +19,9 @@ class RegisterForm(UserCreationForm):
         model = User
         fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2']
 
+"""
+Authentication form for login
+"""
 class LoginForm(AuthenticationForm):
     username = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'placeholder': 'Username', 'class': 'form-control'}))
     password = forms.CharField(max_length=50, required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Password', 'class': 'form-control', 'data-toggle': 'password', 'id': 'password', 'name': 'password'}))
@@ -24,7 +31,9 @@ class LoginForm(AuthenticationForm):
         model = User
         fields = ['username', 'password', 'remember_me']
 
-
+"""
+Updating the users details within profile
+"""
 class UpdateUserForm(forms.ModelForm):
     username = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
     email = forms.EmailField(required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
@@ -33,6 +42,9 @@ class UpdateUserForm(forms.ModelForm):
         model = User
         fields = ['username', 'email']
 
+"""
+For additional details within profile to be updated
+"""
 class UpdateProfileForm(forms.ModelForm):
     avatar = forms.ImageField(widget=forms.FileInput(attrs={'class':'form-control-file'}))
     full_name = forms.CharField(max_length=255, required=False, widget=forms.TextInput(attrs={'placeholder':'Full Name', 'class': 'form-control'}))

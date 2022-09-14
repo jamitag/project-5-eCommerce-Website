@@ -21,14 +21,6 @@
     <!--Font awesome icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-
-    {% block corejs %}
-     <!-- Stripe payment -->
-    <script src="https://js.stripe.com/v3/"></script>
-
-    {% endblock %}
-
-
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +28,7 @@
     <!-- font awesome script -->
     <script src="https://kit.fontawesome.com/2536105b21.js" crossorigin="anonymous"></script>
 
-    <title>Cycle Shop {% block extra_title %}{% endblock %}</title>
+    <title>Cycle Shop | {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
     <header class="container-fluid fixed-top">

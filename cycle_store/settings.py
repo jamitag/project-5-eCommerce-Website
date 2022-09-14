@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
-from decouple import config
+from decouple import config #imports secret keys from .env file
 from pathlib import Path
 # import django_heroku
 
@@ -29,7 +29,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://8000-jamitag-project5-g004aetgzau.ws-eu63.gitpod.io/']
+CSRF_TRUSTED_ORIGINS = ['https://8000-jamitag-project5-g004aetgzau.ws-eu63.gitpod.io/'] #validates csrf token
 
 
 # Application definition
@@ -97,7 +97,7 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID=1
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/' # Redirects to homepage after login
 
 WSGI_APPLICATION = 'cycle_store.wsgi.application'
 
@@ -140,7 +140,7 @@ SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'GMT'
 
 USE_I18N = True
 
@@ -156,6 +156,9 @@ STATIC_URL = '/static/'
 # STATIC_ROOT = (os.path.join(BASE_DIR, 'static_files'),)
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
+"""
+Stripe public and secret key from stripe account
+"""
 STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
 

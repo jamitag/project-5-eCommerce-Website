@@ -6,5 +6,4 @@ urlpatterns = [
     path('payment/', views.payment, name='payment'),
     path('charge/', views.charge, name='charge'),
     path('order-view/', views.orderView, name='orders'),
-
 ]

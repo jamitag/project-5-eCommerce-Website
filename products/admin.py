@@ -1,6 +1,10 @@
 from django.contrib import admin
 from .models import Product, Category
 
+
+"""
+Show item details within admin panel
+"""
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'sku',

@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
+"""
+Billing address model
+"""
 class BillingAddress(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     address = models.CharField(max_length=265, blank=True)
@@ -14,6 +17,9 @@ class BillingAddress(models.Model):
     def __str__(self):
         return f'{self.user.profile.username} Billing Address'
 
+    """
+    Checks if all fields are complete
+    """
     def is_fully_filled(self):
         field_names = [f.name for f in self._meta.get_fields()]
         for field_name in field_names:

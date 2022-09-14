@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% block extra_title %}
+Home
+{% endblock %}
 {% load static %}
 
 <style>
@@ -9,20 +12,10 @@
         height: 420px;
         text-align: center;
     }
-
-    /* .card-product .category img {
-        max-height: 100%;
-        max-width: 100%;
-        object-fit: cover;
-    }
-
-    .card-product {
-        margin-right: 0.5rem;
-    } */
 </style>
 
 {% block content %}
-<br><br><br>
+
     <div class="container my-5">
         <div class="row">
             <div class="col-md-6 col-sm-12 col-lg-4" id="bikes-cat">

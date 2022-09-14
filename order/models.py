@@ -22,8 +22,11 @@ class Cart(models.Model):
         return float_total
 
 
+"""
+Order model
+"""
 class Order(models.Model):
-    orderItems = models.ManyToManyField(Cart) # An order can contain severl items as well as mutiple of those items
+    orderItems = models.ManyToManyField(Cart) # An order can contain several items as well as mutiple of those items
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     ordered = models.BooleanField(default=False) # Checks order has been complete
     created = models.DateTimeField(auto_now_add=True)
@@ -31,8 +34,9 @@ class Order(models.Model):
     orderId = models.CharField(max_length=200, blank=True, null=True)
 
 
-    # total price of all products
-
+    """
+    Total price of all products
+    """
     def get_totals(self):
         total = 0
         for order_item in self.orderItems.all():

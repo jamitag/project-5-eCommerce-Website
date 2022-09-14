@@ -3,6 +3,9 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+"""
+Model for inputting user details
+"""
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     avatar = models.ImageField(default='default.png', upload_to='profile_images')
@@ -12,7 +15,6 @@ class Profile(models.Model):
     country = models.CharField(max_length=50, blank=True)
     city = models.CharField(max_length=50, blank=True)
     post_code = models.CharField(max_length=12, blank=True)
-    # date_joined = models.DateTimeField(auto_now_add=True)
 
 
     def __str__(self):

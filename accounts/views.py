@@ -8,7 +8,9 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 
-
+"""
+Create a new user
+"""
 class RegisterView(View):
     form_class = RegisterForm
     initial = {'key': 'value'}
@@ -35,6 +37,9 @@ class RegisterView(View):
         return render(request, self.template_name, {'form': form})
 
 
+"""
+Login view for registered user
+"""
 class CustomLoginView(LoginView):
     form_class = LoginForm
 
@@ -51,6 +56,9 @@ class CustomLoginView(LoginView):
         return super(CustomLoginView, self).form_valid(form)
 
 
+"""
+Update user and profile form
+"""
 @login_required #authentication required
 def profile(request):
     if request.method == 'POST':
@@ -68,6 +76,9 @@ def profile(request):
     return render(request, 'accounts/profile.html', {'user_form': user_form, 'profile_form': profile_form})
     
 
+"""
+Change password functionality within profile
+"""
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'accounts/change_password.html'
     success_message = "Successfully changed password"

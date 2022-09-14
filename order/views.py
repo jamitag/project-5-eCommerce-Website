@@ -11,8 +11,10 @@ from django.contrib import messages
 
 # Create your views here.
 
+"""
+Calls items to cart which havent been purchased
+"""
 @login_required
-
 def add_to_cart(request, pk):
     # call the item we want to add to cart
     item = get_object_or_404(Product, pk=pk)
@@ -20,7 +22,7 @@ def add_to_cart(request, pk):
 
     order_qs = Order.objects.filter(user=request.user, ordered=False)
 
-    if order_qs.exists(): 
+    if order_qs.exists():
         order = order_qs[0] 
         if order.orderItems.filter(item=item).exists(): # increase an item quantity in your cart
             order_item[0].quantity += 1
@@ -38,9 +40,12 @@ def add_to_cart(request, pk):
         order.orderItems.add(order_item[0])
         messages.info(request, 'Item added to cart')
         return redirect('/')
-        
-@login_required
 
+
+"""
+View all cart items
+"""
+@login_required
 def cart_view(request):
     carts = Cart.objects.filter(user=request.user, purchased=False)
     orders = Order.objects.filter(user=request.user, ordered=False)
@@ -51,9 +56,10 @@ def cart_view(request):
         messages.warning(request, 'No items in your cart')
         return redirect('/')
 
-
+"""
+Removes items for cart
+"""
 @login_required
-
 def remove_from_cart(request, pk):
     item = get_object_or_404(Product, pk=pk)
     order_qs = Order.objects.filter(user=request.user, ordered=False)
@@ -75,6 +81,9 @@ def remove_from_cart(request, pk):
         return redirect('home')
 
 
+"""
+Increase an item already in our cart
+"""
 @login_required
 def increase_cart(request, pk):
     item = get_object_or_404(Product, pk=pk)
@@ -100,6 +109,9 @@ def increase_cart(request, pk):
         return redirect('home')
 
 
+"""
+Decrease an item already in our cart
+"""
 @login_required
 def decrease_cart(request, pk):
     item = get_object_or_404(Product, pk=pk)

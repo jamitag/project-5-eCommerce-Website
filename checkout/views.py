@@ -16,8 +16,6 @@ import stripe
 
 
 @login_required
-
-
 def checkout(request):
     """
     Saving address
@@ -95,6 +93,9 @@ def charge(request):
                 item.save()
         return render(request, 'checkout/charge.html', {"items":orderitems, "order":order})
 
+"""
+Shows orders that have been processed
+"""
 @login_required
 def orderView(request):
     try:
