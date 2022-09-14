@@ -5,7 +5,6 @@ from .forms import BillingAddressForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-import stripe
 from django.conf import settings
 from django.http import JsonResponse, HttpResponse
 from django.urls import reverse
@@ -13,9 +12,12 @@ from django.views import generic
 import datetime
 from django.utils.crypto import get_random_string
 
-# Create your views here.
+import stripe
+
 
 @login_required
+
+
 def checkout(request):
     """
     Saving address
@@ -23,8 +25,6 @@ def checkout(request):
     """
     saved_address = BillingAddress.objects.get_or_create(user=request.user)
     saved_address = saved_address[0]
-
-
 # Save address for future use
     form = BillingAddressForm(instance=saved_address)
     if request.method == 'POST':
@@ -32,8 +32,7 @@ def checkout(request):
         if form.is_valid():
             form.save()
             form = BillingAddressForm(instance=saved_address)
-            messages.success(request, f'Delivery Address Saved')
-    
+            messages.success(request, f'Delivery Address Saved') 
     order_qs = Order.objects.filter(user=request.user, ordered=False)
     order_items = order_qs[0].orderItems.all()
     order_total = order_qs[0].get_totals()
@@ -53,7 +52,7 @@ def payment(request):
     key = settings.STRIPE_PUBLIC_KEY
     order_qs = Order.objects.filter(user=request.user, ordered=False)
     order_total = order_qs[0].get_totals()
-    totalCost = float(order_total * 100);
+    totalCost = float(order_total * 100)
     total = round(totalCost, 2)
     if request.method == 'POST':
         charge = stripe.Charge.create(amount = total,
@@ -95,3 +94,15 @@ def charge(request):
                 item.purchased = True
                 item.save()
         return render(request, 'checkout/charge.html', {"items":orderitems, "order":order})
+
+@login_required
+def orderView(request):
+    try:
+        orders = Order.objects.filter(user=request.user, ordered=True)
+        context = {
+            'orders':orders,
+        }
+    except:
+        messages.warning(request, 'You do not have an active order')
+        return redirect('home')
+    return render(request, 'checkout/order.html', context)
