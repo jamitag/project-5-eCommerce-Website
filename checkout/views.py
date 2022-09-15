@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from order.models import Order, Cart
 from .models import BillingAddress
 from .forms import BillingAddressForm
@@ -18,8 +18,7 @@ import stripe
 @login_required
 def checkout(request):
     """
-    Saving address
-    Order items and order total through context dictionary
+    Saving address, Order items and order total
     """
     saved_address = BillingAddress.objects.get_or_create(user=request.user)
     saved_address = saved_address[0]
@@ -30,17 +29,20 @@ def checkout(request):
         if form.is_valid():
             form.save()
             form = BillingAddressForm(instance=saved_address)
-            messages.success(request, f'Delivery Address Saved') 
+            messages.success(request, f'Delivery Address Saved')
     order_qs = Order.objects.filter(user=request.user, ordered=False)
     order_items = order_qs[0].orderItems.all()
     order_total = order_qs[0].get_totals()
-    return render(request, 'checkout/checkout.html', context={'form':form, 'order_items':order_items, 'order_total':order_total, 'saved_address':saved_address})
-
+    return render(request, 'checkout/checkout.html',
+                  context={'form': form, 'order_items': order_items,
+                           'order_total': order_total,
+                           'saved_address': saved_address})
 
 """
 Stripe secret key from settings.py file
 """
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
 
 def payment(request):
     """
@@ -53,14 +55,15 @@ def payment(request):
     totalCost = float(order_total * 100)
     total = round(totalCost, 2)
     if request.method == 'POST':
-        charge = stripe.Charge.create(amount = total,
-            currency = 'GBP',
-            description = order_qs,
-            source = request.POST['stripeToken'])
+        charge = stripe.Charge.create(amount=total,
+                                      currency='GBP',
+                                      description=order_qs,
+                                      source=request.POST['stripeToken'])
         print(charge)
-    return render(request, 'checkout/payment.html', {"key":key, "total":total})
+    return render(request, 'checkout/payment.html',
+                  {"key": key, "total": total})
 
-    
+
 def charge(request):
     """
     Once payemnt processed, order id and payment id is saved
@@ -69,13 +72,13 @@ def charge(request):
     order = Order.objects.get(user=request.user, ordered=False)
     orderitems = order.orderItems.all()
     order_total = order.get_totals()
-    totalCost = int(float(order_total  * 100))
+    totalCost = int(float(order_total * 100))
     if request.method == 'POST':
         charge = stripe.Charge.create(
-            amount = totalCost,
-            currency = 'GBP',
-            description = order,
-            source = request.POST['stripeToken']
+            amount=totalCost,
+            currency='GBP',
+            description=order,
+            source=request.POST['stripeToken']
         )
 
         print(charge)
@@ -91,17 +94,19 @@ def charge(request):
             for item in cartItems:
                 item.purchased = True
                 item.save()
-        return render(request, 'checkout/charge.html', {"items":orderitems, "order":order})
+        return render(request, 'checkout/charge.html', {"items": orderitems,
+                                                        "order": order})
 
-"""
-Shows orders that have been processed
-"""
+
 @login_required
 def orderView(request):
+    """
+    Shows orders that have been processed
+    """
     try:
         orders = Order.objects.filter(user=request.user, ordered=True)
         context = {
-            'orders':orders,
+            'orders': orders,
         }
     except:
         messages.warning(request, 'You do not have an active order')
