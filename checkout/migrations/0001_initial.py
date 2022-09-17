@@ -15,17 +15,31 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='BillingAddress',
+            name="BillingAddress",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('address', models.CharField(blank=True, max_length=265)),
-                ('postcode', models.CharField(blank=True, max_length=15)),
-                ('city', models.CharField(blank=True, max_length=45)),
-                ('country', models.CharField(blank=True, max_length=30)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("address", models.CharField(blank=True, max_length=265)),
+                ("postcode", models.CharField(blank=True, max_length=15)),
+                ("city", models.CharField(blank=True, max_length=45)),
+                ("country", models.CharField(blank=True, max_length=30)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'verbose_name_plural': 'Billing Address',
+                "verbose_name_plural": "Billing Address",
             },
         ),
     ]

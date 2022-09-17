@@ -7,6 +7,7 @@ class BillingAddressForm(forms.ModelForm):
     """
     Billing address form when checking out
     """
+
     class Meta:
         model = BillingAddress
-        fields = ['address', 'postcode', 'city', 'country']
+        fields = ["address", "postcode", "city", "country"]

@@ -22,21 +22,28 @@ def checkout(request):
     """
     saved_address = BillingAddress.objects.get_or_create(user=request.user)
     saved_address = saved_address[0]
-# Save address for future use
+    # Save address for future use
     form = BillingAddressForm(instance=saved_address)
-    if request.method == 'POST':
+    if request.method == "POST":
         form = BillingAddressForm(request.POST, instance=saved_address)
         if form.is_valid():
             form.save()
             form = BillingAddressForm(instance=saved_address)
-            messages.success(request, f'Delivery Address Saved')
+            messages.success(request, f"Delivery Address Saved")
     order_qs = Order.objects.filter(user=request.user, ordered=False)
     order_items = order_qs[0].orderItems.all()
     order_total = order_qs[0].get_totals()
-    return render(request, 'checkout/checkout.html',
-                  context={'form': form, 'order_items': order_items,
-                           'order_total': order_total,
-                           'saved_address': saved_address})
+    return render(
+        request,
+        "checkout/checkout.html",
+        context={
+            "form": form,
+            "order_items": order_items,
+            "order_total": order_total,
+            "saved_address": saved_address,
+        },
+    )
+
 
 """
 Stripe secret key from settings.py file
@@ -54,14 +61,17 @@ def payment(request):
     order_total = order_qs[0].get_totals()
     totalCost = float(order_total * 100)
     total = round(totalCost, 2)
-    if request.method == 'POST':
-        charge = stripe.Charge.create(amount=total,
-                                      currency='GBP',
-                                      description=order_qs,
-                                      source=request.POST['stripeToken'])
+    if request.method == "POST":
+        charge = stripe.Charge.create(
+            amount=total,
+            currency="GBP",
+            description=order_qs,
+            source=request.POST["stripeToken"],
+        )
         print(charge)
-    return render(request, 'checkout/payment.html',
-                  {"key": key, "total": total})
+    return render(
+        request, "checkout/payment.html", {"key": key, "total": total}
+    )
 
 
 def charge(request):
@@ -73,29 +83,35 @@ def charge(request):
     orderitems = order.orderItems.all()
     order_total = order.get_totals()
     totalCost = int(float(order_total * 100))
-    if request.method == 'POST':
+    if request.method == "POST":
         charge = stripe.Charge.create(
             amount=totalCost,
-            currency='GBP',
+            currency="GBP",
             description=order,
-            source=request.POST['stripeToken']
+            source=request.POST["stripeToken"],
         )
 
         print(charge)
 
         if charge.status == "succeeded":
-            orderId = get_random_string(length=16, allowed_chars=u'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
+            orderId = get_random_string(
+                length=16,
+                allowed_chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+            )
             print(charge.id)
             order.ordered = True
             order.paymentId = charge.id
-            order.orderId = f'#{request.user}{orderId}'
+            order.orderId = f"#{request.user}{orderId}"
             order.save()
             cartItems = Cart.objects.filter(user=request.user)
             for item in cartItems:
                 item.purchased = True
                 item.save()
-        return render(request, 'checkout/charge.html', {"items": orderitems,
-                                                        "order": order})
+        return render(
+            request,
+            "checkout/charge.html",
+            {"items": orderitems, "order": order},
+        )
 
 
 @login_required
@@ -106,9 +122,9 @@ def orderView(request):
     try:
         orders = Order.objects.filter(user=request.user, ordered=True)
         context = {
-            'orders': orders,
+            "orders": orders,
         }
     except:
-        messages.warning(request, 'You do not have an active order')
-        return redirect('home')
-    return render(request, 'checkout/order.html', context)
+        messages.warning(request, "You do not have an active order")
+        return redirect("home")
+    return render(request, "checkout/order.html", context)

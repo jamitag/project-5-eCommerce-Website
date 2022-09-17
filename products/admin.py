@@ -5,15 +5,18 @@ from .models import Product, Category
 """
 Show item details within admin panel
 """
+
+
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
-        'sku',
-        'name',
-        'category',
-        'price',
+        "sku",
+        "name",
+        "category",
+        "price",
     )
 
-    ordering = ('sku',)
+    ordering = ("sku",)
+
 
 # Register your models here.
 admin.site.register(Product, ProductAdmin)

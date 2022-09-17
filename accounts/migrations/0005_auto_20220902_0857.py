@@ -7,24 +7,26 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('accounts', '0004_auto_20220902_0842'),
+        ("accounts", "0004_auto_20220902_0842"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='profile',
-            name='city',
+            model_name="profile",
+            name="city",
             field=models.CharField(blank=True, max_length=50),
         ),
         migrations.AddField(
-            model_name='profile',
-            name='date_joined',
-            field=models.DateTimeField(auto_now_add=True, default=django.utils.timezone.now),
+            model_name="profile",
+            name="date_joined",
+            field=models.DateTimeField(
+                auto_now_add=True, default=django.utils.timezone.now
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='profile',
-            name='post_code',
+            model_name="profile",
+            name="post_code",
             field=models.CharField(blank=True, max_length=12),
         ),
     ]
