@@ -61,7 +61,8 @@ def cart_view(request):
     if carts.exists() and orders.exists():
         order = orders[0]
         return render(
-            request, "order/cart.html", context={"carts": carts, "order": order}
+            request, "order/cart.html",
+            context={"carts": carts, "order": order}
         )
     else:
         messages.warning(request, "No items in your cart")
@@ -154,7 +155,8 @@ def decrease_cart(request, pk):
             else:
                 order.orderItems.remove(order_item)
                 order_item.delete()
-                messages.warning(request, f"{item.name} removed from your cart")
+                messages.warning(request,
+                                 f"{item.name} removed from your cart")
                 return redirect("cart")
 
         else:

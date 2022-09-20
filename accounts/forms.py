@@ -151,7 +151,8 @@ class UpdateProfileForm(forms.ModelForm):
     address_1 = forms.CharField(
         max_length=300,
         widget=forms.Textarea(
-            attrs={"class": "form-control", "placeholder": "Address", "rows": 1}
+            attrs={"class": "form-control", "placeholder": "Address",
+                   "rows": 1}
         ),
     )
     city = forms.CharField(
