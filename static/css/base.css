@@ -1,3 +1,7 @@
+li {
+  list-style-type: none;
+}
+
 .logo {
   border-radius: 50%;
 }
@@ -23,6 +27,16 @@
   color: white;
   filter: drop-shadow(0 0 0.75rem rgb(10, 112, 237));
 }
+
+#cart-table {
+  width: 15%;
+}
+
+  .social-links {
+    color: gray;
+    font-size: 2em;
+    padding: 5px;
+  }
 
 /* -------------------------------- Media Queries */
 

@@ -4,7 +4,7 @@ Cart
 {% endblock %}
 {% block content %}
 
-<div class="container my-5">
+<div class="container my-5" id="cart-body">
     <div class="my-5">
         <h2>
             Your cart
@@ -12,10 +12,10 @@ Cart
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col" width="15%">#</th>
+                    <th scope="col" id="cart-table">#</th>
                     <th scope="col">Product Name</th>
                     <th scope="col">Quantity</th>
-                    <th scope="col" align="right">Price</th>
+                    <th scope="col">Price</th>
                     <th scope="col">Remove</th>
                 </tr>
             </thead>
@@ -31,7 +31,7 @@ Cart
                         {{cart.quantity}}
                         <a href="{% url 'increase' pk=cart.item.pk %}" class="mr-2"><span class="badge badge-light"><i class="fas fa-plus"></i></span></a>
                     </td>
-                    <td align="right">
+                    <td>
                         £ {{cart.get_total}}
                     </td>
                     <td>
@@ -42,7 +42,7 @@ Cart
                 <tr>
                     <th scope="row"></th>
                     <td colspan="2">Total</td>
-                    <td align="right">£ {{order.get_totals|floatformat:2}}</td>
+                    <td>£ {{order.get_totals|floatformat:2}}</td>
                     <td></td>
                 </tr>
                 <tr>

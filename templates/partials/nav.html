@@ -1,40 +1,35 @@
 {% load cart_tag %}
-<style>
-  li {
-    list-style-type: none;
-  }
-</style>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="{% url 'home' %}">
         <img class="logo" alt="logo" src="/media/logo.png"
           width="60" height="60">
       </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
   
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Explore
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu">
               <a class="dropdown-item" href="{% url 'products' %}?category=bikes">Bikes</a>
               <a class="dropdown-item" href="{% url 'products' %}?category=parts">Parts</a>
               <a class="dropdown-item" href="{% url 'products' %}?category=clothing">Clothing</a>
               <a class="dropdown-item" href="{% url 'products' %}">Everything</a>
             </div>
-          </li>
-          <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'products' %}">
+        </li>
+      </ul>
+          <form class="form-inline my-2 my-lg-0 text-center" method="GET" action="{% url 'products' %}">
             <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search product" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
               <i class="fas fa-search"></i>
             </button>
           </form>
-      </ul>
-      <ul class="navbar-nav ml-auto">
         {% if user.is_authenticated %}
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
             <a class="nav-link" href="{% url 'cart' %}"><i class="fas fa-shopping-cart"></i>
               <span class="badge badge-warning">{{request.user|cart_total}}</span>
@@ -51,16 +46,13 @@
               <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
           </div>
         </li>
+      </ul> 
         {% else %}
+      <ul> 
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'login' %}">Login</a>
         </li>
       </ul> 
         {% endif %}
-
-        <li>
-
-        </li>
-      </ul>
     </div>
   </nav>
