@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block extra_title %}
 Success
 {% endblock %}
@@ -10,7 +11,7 @@ Success
         Thanks for your order
     </h2>
     <div class="my-5">
-        <img class="logo" alt="logo" src="/media/logo.png"
+        <img class="logo" alt="logo" src="{% static 'logo.png' %}"
         width="120" height="120">
     </div>
     <a href="{% url 'orders' %}" class="btn btn-success">My orders</a>

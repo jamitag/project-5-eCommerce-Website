@@ -17,8 +17,8 @@ Home
 {% block content %}
 
     <div class="container my-5">
-        <div class="row">
-            <div class="col-md-6 col-sm-12 col-lg-4" id="bikes-cat">
+        <div class="row text-center">
+            <div class="col-md-12 col-sm-12 col-lg-4" id="bikes-cat">
                 <figure class="card card-product">
                     <a href="{% url 'products' %}?category=bikes">
                         <img src="{% static 'bikes.png' %}" class="category" alt="bikes category" style="width: auto; height: 620px;">
@@ -26,7 +26,7 @@ Home
                     </a>
                 </figure>
             </div>
-            <div class="col-md-6 col-sm-12 col-lg-4" id="parts-cat">
+            <div class="col-md-12 col-sm-12 col-lg-4" id="parts-cat">
                 <figure class="card card-product">
                 <a href="{% url 'products' %}?category=parts">
                     <img src="{% static 'bikeparts.png' %}" class="category" alt="parts category" style="width: auto; height: 620px;">
@@ -34,7 +34,7 @@ Home
                 </a>
                 </figure>
             </div>
-            <div class="col-md-6 col-sm-12 col-lg-4" id="clothing-cat">
+            <div class="col-md-12 col-sm-12 col-lg-4" id="clothing-cat">
                 <figure class="card card-product">
                 <a href="{% url 'products' %}?category=clothing">
                     <img src="{% static 'bikeclothes.png' %}" class="category" alt="clothing category" style="width: auto; height: 620px;">

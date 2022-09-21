@@ -3,14 +3,17 @@
 {{request.user.username}}'s Profile
 {% endblock %}
 {% block content %}
+
 <div class="container my-5">
     <div class="row">
-        <div class="col-md-12">
-            <div>
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8">
+            <div class="text-center">
                 <img src="{{user.profile.avatar.url}}"  class="rounded-circle img-thumbnail account-img w-25" style="cursor:pointer;" alt="profile image">
             </div>
-             
-             {% if user_form.errors %}
+            {% if user_form.errors %}
                  <div class="alert alert-danger alert-dismissible" role="alert">
                      <div id="form_errors">
                          {% for key, value in user_form.errors.items %}
@@ -25,53 +28,50 @@
                      </button>
                  </div>
              {% endif %}
-             
-             <div class="form-content">
-                 <form method="POST" enctype="multipart/form-data">
-                     {% csrf_token %}
-                     <div class="form-row">
-                         <div class="col-md-5">
-                             <div class="form-group">
-                                 <label class="small mb-1">Username:</label>
-                                 {{user_form.username}}
-                                 <label class="small mb-1">Email:</label>
-                                 {{user_form.email}}
-                             </div>
-                             <div class="form-group">
-                                <a href="{% url 'password_change' %}">
-                                    Change Password
-                                </a>
-                                <hr>
-                                 <label class="small mb-1">Change Avatar:</label>
-                                 {{profile_form.avatar}}
-                             </div>
-                             <div class="form-group">
-                                <label class="small mb-1">Full Name</label>
-                                {{profile_form.full_name}}
-                             </div>
-                             <div class="form-group">
-                                <label class="small mb-1">Address</label>
-                                {{profile_form.address_1}}
-                                <label class="small mb-1">City</label>
-                                {{profile_form.city}}
-                                <label class="small mb-1">Country</label>
-                                {{profile_form.country}}
-                                <label class="small mb-1">Post Code</label>
-                                {{profile_form.post_code}}
-                             </div>
-                             <label class="small mb-1">Bio:</label>
-                             {{profile_form.bio}}
-                         </div>
-                     </div>
-                     <br><br>
-                     <button type="submit" class="btn btn-dark btn-lg">
-                         Save Changes
-                     </button>
-                     <button type="reset" class="btn btn-dark btn-lg">
-                         Reset
-                     </button>
-                 </form>
-             </div>
+            <div class="form-content">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <div>
+                            <div class="form-group">
+                                <label class="small mb-1">Username:</label>
+                                {{user_form.username}}
+                                <label class="small mb-1">Email:</label>
+                                {{user_form.email}}
+                            </div>
+                            <div class="form-group">
+                               <a href="{% url 'password_change' %}">
+                                   Change Password
+                               </a>
+                               <hr>
+                                <label class="small mb-1">Change Avatar:</label>
+                                {{profile_form.avatar}}
+                            </div>
+                            <div class="form-group">
+                               <label class="small mb-1">Full Name</label>
+                               {{profile_form.full_name}}
+                            </div>
+                            <div class="form-group">
+                               <label class="small mb-1">Address</label>
+                               {{profile_form.address_1}}
+                               <label class="small mb-1">City</label>
+                               {{profile_form.city}}
+                               <label class="small mb-1">Country</label>
+                               {{profile_form.country}}
+                               <label class="small mb-1">Post Code</label>
+                               {{profile_form.post_code}}
+                            </div>
+                            <label class="small mb-1">Bio:</label>
+                            {{profile_form.bio}}
+                        </div>
+                    <br><br>
+                    <button type="submit" class="btn btn-dark btn-lg">
+                        Save Changes
+                    </button>
+                    <button type="reset" class="btn btn-dark btn-lg">
+                        Reset
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

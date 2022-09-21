@@ -96,7 +96,7 @@ def charge(request):
         if charge.status == "succeeded":
             orderId = get_random_string(
                 length=16,
-                allowed_chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+                allowed_chars="abcdefghijklmnopqrstuvwxyz0123456789",
             )
             print(charge.id)
             order.ordered = True
@@ -120,7 +120,7 @@ def orderView(request):
     Shows orders that have been processed
     """
     try:
-        orders = Order.objects.filter(user=request.user, ordered=True)
+        orders = Order.objects.filter(user=request.user, ordered=True).order_by('-created')
         context = {
             "orders": orders,
         }
