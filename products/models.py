@@ -37,3 +37,19 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+"""
+Model for adding comments to products
+"""
+
+
+class ProductComment(models.Model):
+    product = models.ForeignKey(Product, models.CASCADE,
+                                related_name='comments')
+    author = models.CharField(max_length=200)
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return '%s - %s' % (self.product.name, self.author)
