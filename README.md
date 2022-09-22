@@ -219,7 +219,7 @@ Sign up page
 
 ## Data Model
 
-<img src="static/readme-images/dbmodel.png">
+<img src="static/readme-images/erd.png">
 
 ## Testing
 
@@ -252,7 +252,8 @@ Sign up page
 | Clicking ‘Change password’ link in profile page | Users are directed to password-change page | YES |
 | Clicking ‘Choose file’ button in profile page | Prompts users to select a file to update avatar | YES |
 | Clicking ‘Save changes’ button in profile page | Saves any updates to profile page | YES |
-| Clicking ‘Reset’ button in profile page | Users receive alert ‘Your profile has been updated successfully!’ | YES |
+| Clicking 'Save changes' button in profile page | Users receive alert ‘Your profile has been updated successfully!’ | YES |
+| Clicking ‘Reset’ button in profile page | Removes data in Full Name and Address fields | YES |
 | Clicking ‘+’ button in cart page | Item within cart is increased by 1 | YES |
 | Clicking ‘+’ button in cart page | Users receive alert ‘{item.name} added’ | YES |
 | Clicking ‘-’ button in cart page when multiple items are in cart | Item within cart is decreased by 1  | YES |
@@ -262,11 +263,13 @@ Sign up page
 | Clicking ‘Remove from cart’ button in cart page | Users receive alert ‘Item removed from cart’ | YES |
 | Clicking ‘Continue Shopping’ button in cart page | Users directed to homepage | YES |
 | Clicking ‘Checkout’ button in cart page | Users directed to checkout page | YES |
-| Clicking ‘Save changes’ button in checkout page(when complete) | ‘Make Payment’ button is available to press | YES |
+| Clicking ‘Save changes’ button in checkout page(when complete) | ‘Proceed to Checkout’ button becomes available to press | YES |
 | Clicking ‘Save changes’ button in checkout page(when complete) | Users receive alert ‘Delivery address saved’ | YES |
 | Clicking ‘Save changes’ button in checkout page(when not complete) | Users receive alert ‘Please provide all information to proceed to payment’ | YES |
 | Clicking ‘Make payment’ button in checkout page | Only works if address fields have been completed | YES |
-
+| Clicking ‘Proceed to Checkout’ button in checkout page | Directs user to payment page | YES |
+| Clicking ‘Pay with card’ button in payment page | 'Complete Order' pop up requesting card details | YES |
+| Entering stripe test card payment details with valid email address and press 'Pay $x' button | Order processes successfully and user directed to success page confirming order | YES |
 
 ### Validator Testing
 
@@ -297,21 +300,22 @@ The site was tested across several devices with varying screen sizes;
 
 ## Issues
 
-**Issue** - Whilst preparing the project for deployment, there was a change made that resulted in the login functionality to stop working. I was greeted with a 403 forbidden error when I attempted to login.
+**Issue 1** - Whilst preparing the project for deployment, there was a change made that resulted in the login functionality to stop working. I was greeted with a 403 forbidden error when I attempted to login.
 
 **Solution** - I tried undoing the changes made for deployment which did not work. I ultimately had to revert to a previous commit to restore the login functionality. When deployment was attempted again, the same bug appeared. After many attempts at various solutions, downgrading the version of Django from version 4 to 3.2.10 seemed to be the fix that was needed.
 
-
-**Solution** - I discovered a hack to remove the random dot [here](https://stackoverflow.com/questions/36034537/html-random-dot-on-webpage).
-
-**Issue** - When validating HTML for the ‘product_detail’ page, using source code from site, I received the following error; No p element in scope but a p end tag seen. This was despite the additional <p> not being present in my product_detail.html page.
+**Issue 2** - When validating HTML for the ‘product_detail’ page, using source code from site, I received the following error; No p element in scope but a p end tag seen. This was despite the additional 'p' tag not being present in my product_detail.html page.
 
 **Solution** - It appears adding the linebreak filter was the cause of this issue. I found the following [solution](https://github.com/DjangoGirls/tutorial/issues/776) which removed the error.
 
 
-**Issue** - Several stray tag errors are appearing in my add_comment.html when running the HTML source from browser.
+**Issue 3** - Several stray tag errors are appearing in my add_comment.html when running the HTML source from browser.
 
 **Solution** - The html file itself is fine and the error seemed to be coming from the block tag pulling a Django form for my forms.py file. I found a similar issue [here](https://stackoverflow.com/questions/38634914/display-django-form-error-for-each-field-in-template-and-each-correct-data-in-te), and when I changed by block tag from {{form}} to {{form.body}}, this removed the warnings.
+
+**Issue 4** - Django media files not working when debug set to False.
+
+**Solution** - I discovered a [solution](https://stackoverflow.com/questions/55842323/django-media-files-doesnt-work-when-debug-false), and when I changed by block tag from {{form}} to {{form.body}}, this removed the warnings.
 
 ## Technologies
 
@@ -327,8 +331,12 @@ The site was tested across several devices with varying screen sizes;
 ### Template
 - Django
 
+### Deployment
+- Heroku
+
 ### Database
 - SQLite
+- Postgres (deployed)
 
 ### Version control
 - GitHub
@@ -341,25 +349,41 @@ The site was tested across several devices with varying screen sizes;
 - Image resizing - [reduceimages.com](https://www.reduceimages.com/)
 - [Lucid](https://lucid.app/)
 - Creating store [logo](https://www.logo.com/)
+- GoodNotes app
 
 ## Deployment
 
 This programme was deployed using [Heroku](https://heroku.com/)
 
+### Heroku
 1. Log into Heroku, select 'Create new app’.
 2. Name your application then within the the dashboard, select settings and scroll down to ‘Reveal Config vars’
 3. Enter relevant config vars, remembering to include any environmental variables you have in place.
-
+4. Include Heroku postgres Add on within Resouces tab.
 5. Navigate from ‘Settings’ to ‘Deploy’ and select ‘Github’ within the ‘Deployment Method’ section.
 6. Search and connect your Github repo in the ‘Connect to Github’ section.
 7. Clicking ‘Deploy branch’ will then create your Heroku app and you can view it by clicking the ‘View’ button at the bottom of the page.
 	- Selecting ‘Enable Automatic Deploys’ will ensure that your Heroku app is updated each time you push changes from Gitpod otherwise you will have to deploy manually each time using the steps mentioned above.
 
+### Local host
+1. Install gunicorn and django_heroku.
+2. Update requirements.txt file.
+3. Add django_heroku to settings.py.
+4. Include static_root settings in settings.py.
+5. Create json file containing existing data 'python3 manage.py dumpdata > datadump.json'.
+6. Export file with 'python3 manage.py loaddata datadump.json'
 
 ## Credits
 
-1. 
+1. This [resource](https://dev.to/thepylot/how-to-migrate-data-from-sqlite-to-postgresql-in-django-182h) was helpful with managing my data when deploying.
 
+2. Whilst Code Institute resources where great, I found it invaluable gaining additional view from these providers: [Corey Schafer](https://www.youtube.com/watch?v=UmljXZIypDc&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p), [Mosh](https://www.youtube.com/watch?v=_uQrJ0TkZlc), and [Net Ninja](https://www.youtube.com/watch?v=n-FTlQ7Djqc&list=PL4cUxeGkcC9ib4HsrXEYpQnTOTZE1x0uc).
+
+3. Boutique ado was incredibly helpful and is also a similar project to my project therefore I was cautious about following the videos too much. Some other resources I used to guide me where; [tutorial 1](https://www.youtube.com/watch?v=YZvRrldjf1Y)[tutorial 2](https://www.youtube.com/watch?v=4xmbHcqyl3I&list=PL_99hMDlL4d2zsGU5nOgADmRc6A8msXyh) [guide 1](https://www.geeksforgeeks.org/e-commerce-website-using-django/)
+
+4. Due to issues noted in 'issue 1', I had to find assistance with deploying app. Several links where helpful including this [tutorial](https://www.youtube.com/watch?v=V2rWvStauak) & [article](https://dev.to/thepylot/how-to-migrate-data-from-sqlite-to-postgresql-in-django-182h).
+
+5. I took my product images and descriptions from [sigma sports](https://www.sigmasports.com/).
 
 ### Other
 
