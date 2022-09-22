@@ -1,108 +1,366 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+<img src="static/logo.png">
 
-Welcome jamitag,
+# The Cycle Shop
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+## Welcome - [The Cycle Shop](https://github.com/jamitag/portfolio-5)
+We are an online business specialising in cycling goods including Bikes, Parts and Clothing. Our site will provide users with a smooth online shopping experience all the way the purchase. Our user will also be able to review their favourite items which will help promote additional revenue for the store.
 
-## Gitpod Reminders
+As a ‘Business to Consumer’ (B2C) retailer, we will ship all items to you directly ourselves - no middle men - to avoid any hassle.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+We also have an active online presence including FaceBook, Twitter, Instagram and Strava.
+<br>
+<br>
+<img src="static/readme-images/facebookstore.png">
 
-`python3 -m http.server`
+## Features
 
-A blue button should appear to click: _Make Public_,
+### Existing Features
 
-Another blue button should appear to click: _Open Browser_.
+__Homepage__
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+The homepage is deliberately kept simple in order to make the products take centre stage and be the focus of the users attention as soon as they open the site. The categories of products are bold and obvious, with accompanying images, for the user to jump right and begin browsing the area of their choice.
 
-A blue button should appear to click: _Make Public_,
+<img src="static/readme-images/site_images/homepage.png">
 
-Another blue button should appear to click: _Open Browser_.
+__Navigation Bar__
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+The Navigation bar appears at the top of all pages maintaining a consistent look across the website. It contains links to a specific areas of the site such as categories, search, login. Additional user and cart functionality becomes available when user logs in.
 
-To log into the Heroku toolbelt CLI:
+<img src="static/readme-images/site_images/nav-bar.png">
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+__Profile link__
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+User profile can be clicked from the navbar. This will only be available to users that are logged in and will be displayed under their username.
 
-------
+__Login link__
 
-## Release History
+Only shown when user is not logged in. The login link in the navbar will direct the user to the login page where they can login or create an account.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+__Cart link__
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+Only available to logged in users. Clicking the cart will direct user to the cart page providing there is items in the users cart, otherwise they will receive an alert. The number of items within the users cart is visible next to the cart icon.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+__Username displayed__
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+Only available to logged in users. Clicking on the username will present the user with two options; ‘Profile’ and ‘Logout’. ‘Profile’ will direct user to the users profile area and ‘Logout’ will log the user out and direct them to a logout page notifying the user they have been logged out and offer an option to sign in again.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+<img src="static/readme-images/site_images/navbarloggedin.png">
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+__Categories__
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+User have a choice to view all products or choose to select one of the product categories found in the navbar.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+__Product page__
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+Users can view images of the products and read a description as well as add a comment. The ‘add to cart’ button will place the item into the users cart.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+<img src="static/readme-images/site_images/product.png">
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+__Profile page__
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+Users can view and update their profile page including bio and avatar as well as updating their password.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+<img src="static/readme-images/site_images/profile.png">
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+__Cart__
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+Users can view their shopping cart which will list all items they have ‘Added to cart’, including quantity and a total price for all items. User can adjust the quanity of items in their cart or remove completely.
 
-------
+<img src="static/readme-images/site_images/cart.png">
 
-## FAQ about the uptime script
+__Checkout__
 
-**Why have you added this script?**
+In the checkout section, users will fill in their delivery details further checkout sections to be included. A list of items to be purchased is also found beside form as well as an order total. The users inout their address, the address will be saved for future use. User cannot proceed to the payment section until all field of delivery address have been complete.
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+<img src="static/readme-images/site_images/checkout.png">
 
-**How will this affect me?**
+__User notification__
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+Users will receive alerts throughout this site for various actions, including adding items to cart, removing items from cart, updating profile page, saving address, password change etc.
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+<img src="static/readme-images/site_images/add_item_notif.png">
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+<img src="static/readme-images/site_images/remove_item_notif.png">
 
-**So….?**
+<img src="static/readme-images/site_images/update_prof_notif.png">
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+__Add Comment__
 
-**Can I opt out?**
+Users can add a comment to a particular product which can be seen by other users as a form of review system. The comment will be show alongside the username of the author as well as a time stamp showing the date the comment was made. Comments can also be deleted by the user who created the comment.
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+<img src="static/readme-images/site_images/comment.png">
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+__Footer__
 
-**Anything more?**
+A footer can be found at the foot of every page. This displays links to categories of products as wel as our social media links. User can also enter their email to sign up for our newsletter. Additional contact information can also be found.
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+<img src="static/readme-images/site_images/footer.png">
 
----
 
-Happy coding!
+
+### Features to add
+
+- Create a star rating system for each product.
+
+- Create a Wishlist for customers to add their favourite products.
+
+- Improve stock level on site
+
+## Design
+I opted for a simple design, similar to existing sports/cycling stores e.g. [wiggle](https://www.wiggle.com/), where the products themselves are the focus and there isn’t too many graphics and colours to detract from this. I played around with different colours but I liked the simplicity of the white background with light grey navbar and footer and I felt this allowed the products themselves to really jump from the page. I thought this also ensured my logo stood out more; this being the main source of constant visual colour throughout the site.
+
+## Wireframes
+
+I designed the basis of the website using the Goodnotes app. Inspiration for the layout and content came from [wiggle.com](https://www.wiggle.co.uk) and [Sigma sports](https://www.sigmasports.com).
+
+<img src="static/readme-images/wireframe_homepage.png">
+
+Homepage
+
+<img src="static/readme-images/wireframe_productpage.png">
+
+Product page
+
+<img src="static/readme-images/wireframe_signuppage.png">
+
+Sign up page
+
+## User Experience (UX)
+
+| User Story: Register for account | 
+| ---- | 
+| **Site User** |
+| I want to to easily register for an account |
+| I want to be able to save personal data which speeds up the checkout process in the future |
+| **Site Owner** |
+| I want customers to register an account with us to improve their experience and as a way to feel connected to the store |
+| I want customers to create a profile to build their involvement with the site and feel valued |
+
+| User Story: Login | 
+| ---- | 
+| **Site User** |
+| I want to be able to log in easily |
+| Login in should be available an recognisable as soon as I visit the homepage |
+| I want to be able to easily logout to protect my information |
+| **Site Owner** |
+| I want customers to be able to log in with as few clicks as possible |
+| I want customers to be able to log out with as few clicks as possible |
+
+| User Story: Change password | 
+| ---- | 
+| **Site User** |
+| I want to be able to easily change my password from within my account |
+| **Site Owner** |
+| I want customers to maintain safe and secure accounts by updating passwords reguarly |
+
+| User Story: View products by category | 
+| ---- | 
+| **Site User** |
+| I want to view certain type of items |
+| I want to visit a category of products with as few clicks as possible |
+| I do not want to browse every product unnecessarily |
+| **Site Owner** |
+| I want customers to find what they need quickly in order to purchase what they need quickly |
+
+| User Story: Search for product | 
+| ---- | 
+| **Site User** |
+| I want to view a specific item |
+| I want to easily search for that item from the homepage |
+| **Site Owner** |
+| I want customers to find what they need quickly in order to purchase what they need quickly |
+
+| User Story: Update quantity of items | 
+| ---- | 
+| **Site User** |
+| I want to adjust the number of items in my cart easily without going into the product page and adding manually |
+| I want to be able to be able to remove an item from within the cart |
+| **Site Owner** |
+| I want the customer to be able to update their basket items easily, which may encourage additional purchases |
+
+| User Story: Update product details | 
+| ---- | 
+| **Site User** |
+| I want items descriptions and images to best reflect item for sale |
+| I want to be assured about the item I’m purchasing |
+| **Site Owner** |
+| I want to be able to update items to suit business needs |
+
+| User Story: Update available products | 
+| ---- | 
+| **Site User** |
+| I want the site content to have a varied amount of in stock items |
+| I don’t want unnecessary  ‘unavailable’ items cluttering the product pages |
+| **Site Owner** |
+| I want items available for purchase to reflect stock levels |
+
+| User Story: Delete items | 
+| ---- | 
+| **Site User** |
+| NA |
+| **Site Owner** |
+| I want to keep the website updated as much as possible and sell items that are available |
+
+| User Story: Pay securely| 
+| ---- | 
+| **Site User** |
+| I want a fast and secure means to purchase items |
+| I want immediate on screen confirmation that a transaction has been successful |
+| **Site Owner** |
+| I want the site to protect customer data and provide a seamless experience throughout the checkout process to encourage return custom |
+
+| User Story: Order confirmation | 
+| ---- | 
+| **Site User** |
+| I want a record of confirmation as proof of purchase |
+| **Site Owner** |
+| I want customers to feel assured that their order has been processed and possess a record of their purchase |
+
+## Data Model
+
+<img src="static/readme-images/dbmodel.png">
+
+## Testing
+
+### Manual Testing
+
+| Test | Expectation | Working |
+| ---- | ------ | --------------- |
+| Click logo in Navbar| Take user to homepage | YES |
+| Click ‘Login’ (when not logged in) in Navbar| Take user to login section | YES |
+| Click ‘Username’ (when logged in) in Navbar| Dropdown showing profile and logout options | YES |
+| Click ‘Profile’ (when logged in) in Navbar| User taken to profile section | YES |
+| Click ‘Logout’ (when logged in) in Navbar| User logged out | YES |
+| Click ‘Explore’ in Navbar (normal user)| Dropdown showing categories of products | YES |
+| Click ‘Explore’ in Navbar (superuser)| Dropdown showing categories of products and product management section | YES |
+| Click cart icon in Navbar (when logged in and no items have been added to cart)| Users receive alert ‘No items in your cart’ | YES |
+| Click cart icon in Navbar (when logged in and there is items added to cart)| Users are directed to cart page where they can view their order | YES |
+| Click inside search bar in Navbar | Allows user to type and search| YES |
+| Click ‘Bikes’ category image on homepage | Take user to bikes category | YES |
+| Click ‘Parts’ category image on homepage | Take user to parts category | YES |
+| Click ‘Clothing’ category image on homepage | Take user to clothing category | YES |
+| Click ‘Bikes’ category link in footer | Take user to bikes category | YES |
+| Click ‘Parts’ category link in footer| Take user to parts category | YES |
+| Click ‘Clothing’ category link in footer | Take user to clothing category | YES |
+| Click social media links in footer | Take user to relevant social media website in a new page | YES |
+| Clicking on any product | Directs user to correct product page | YES |
+| Clicking ‘Add to cart’ button | Adds 1 relevant item to the users cart | YES |
+| Clicking ‘Add to cart’ button | Users receives alert ‘Item added to cart’ | YES |
+| Clicking ‘Add to cart’ button when item is already in cart| Users receives alert ‘The number of items have been updated’ | YES |
+| Clicking ‘Add to cart’ button when not logged in | User is directed to the login page | YES |
+| Clicking ‘Change password’ link in profile page | Users are directed to password-change page | YES |
+| Clicking ‘Choose file’ button in profile page | Prompts users to select a file to update avatar | YES |
+| Clicking ‘Save changes’ button in profile page | Saves any updates to profile page | YES |
+| Clicking ‘Reset’ button in profile page | Users receive alert ‘Your profile has been updated successfully!’ | YES |
+| Clicking ‘+’ button in cart page | Item within cart is increased by 1 | YES |
+| Clicking ‘+’ button in cart page | Users receive alert ‘{item.name} added’ | YES |
+| Clicking ‘-’ button in cart page when multiple items are in cart | Item within cart is decreased by 1  | YES |
+| Clicking ‘-’ button in cart page when multiple items are in cart | Users receive alert ‘{item.name} removed’ | YES |
+| Clicking ‘-’ button in cart page when there is only 1 item in the cart | Users are directed to homepage and receive alert ‘No items in your cart’| YES |
+| Clicking ‘Remove from cart’ button in cart page | The selected item is removed from the user cart | YES |
+| Clicking ‘Remove from cart’ button in cart page | Users receive alert ‘Item removed from cart’ | YES |
+| Clicking ‘Continue Shopping’ button in cart page | Users directed to homepage | YES |
+| Clicking ‘Checkout’ button in cart page | Users directed to checkout page | YES |
+| Clicking ‘Save changes’ button in checkout page(when complete) | ‘Make Payment’ button is available to press | YES |
+| Clicking ‘Save changes’ button in checkout page(when complete) | Users receive alert ‘Delivery address saved’ | YES |
+| Clicking ‘Save changes’ button in checkout page(when not complete) | Users receive alert ‘Please provide all information to proceed to payment’ | YES |
+| Clicking ‘Make payment’ button in checkout page | Only works if address fields have been completed | YES |
+
+
+### Validator Testing
+
+#### Python
+
+I fixed the basic errors from the Problems tab in the terminal using flake8. Additionally, all .py files were ran through <a href="http://pep8online.com">PEP8 linter</a>. Common errors encountered such as ‘Line too long’, ‘Trailing white space’, ‘Black lines’ etc where found. All where tidied up without any concerns.
+
+#### HTML
+
+I opened each web page in the browser and copy the rendered HTML code into the validator in order to avoid errors caused by the Django expressions.
+All HTML code was run through [W3C HTML validation service](https://validator.w3.org/nu/). All errors found where cleared without any concerns.
+
+#### CSS
+
+CSS files and style tags where ran through [W3C CSS validation service](https://jigsaw.w3.org/css-validator/) and showed no errors.
+
+#### JavaScript
+
+JavaScript files where validated with [JSHint validator](media/jshint.png) and no errors where found.
+
+### Responsiveness
+
+The site was tested across several devices with varying screen sizes;
+
+- MacBook - 1280 x 1200
+- iPad	- 768 x 1024
+- iPhone 6/7/8 - 375 x 667
+
+## Issues
+
+**Issue** - Whilst preparing the project for deployment, there was a change made that resulted in the login functionality to stop working. I was greeted with a 403 forbidden error when I attempted to login.
+
+**Solution** - I tried undoing the changes made for deployment which did not work. I ultimately had to revert to a previous commit to restore the login functionality. When deployment was attempted again, the same bug appeared. After many attempts at various solutions, downgrading the version of Django from version 4 to 3.2.10 seemed to be the fix that was needed.
+
+
+**Solution** - I discovered a hack to remove the random dot [here](https://stackoverflow.com/questions/36034537/html-random-dot-on-webpage).
+
+**Issue** - When validating HTML for the ‘product_detail’ page, using source code from site, I received the following error; No p element in scope but a p end tag seen. This was despite the additional <p> not being present in my product_detail.html page.
+
+**Solution** - It appears adding the linebreak filter was the cause of this issue. I found the following [solution](https://github.com/DjangoGirls/tutorial/issues/776) which removed the error.
+
+
+**Issue** - Several stray tag errors are appearing in my add_comment.html when running the HTML source from browser.
+
+**Solution** - The html file itself is fine and the error seemed to be coming from the block tag pulling a Django form for my forms.py file. I found a similar issue [here](https://stackoverflow.com/questions/38634914/display-django-form-error-for-each-field-in-template-and-each-correct-data-in-te), and when I changed by block tag from {{form}} to {{form.body}}, this removed the warnings.
+
+## Technologies
+
+### Editor
+- GitPod
+
+### Languages
+- Python
+- HTML5
+- CSS3 / bootstrap
+- JavaScript
+
+### Template
+- Django
+
+### Database
+- SQLite
+
+### Version control
+- GitHub
+
+### Libraries
+- Google Fonts
+- Stock Images
+
+### Other
+- Image resizing - [reduceimages.com](https://www.reduceimages.com/)
+- [Lucid](https://lucid.app/)
+- Creating store [logo](https://www.logo.com/)
+
+## Deployment
+
+This programme was deployed using [Heroku](https://heroku.com/)
+
+1. Log into Heroku, select 'Create new app’.
+2. Name your application then within the the dashboard, select settings and scroll down to ‘Reveal Config vars’
+3. Enter relevant config vars, remembering to include any environmental variables you have in place.
+
+5. Navigate from ‘Settings’ to ‘Deploy’ and select ‘Github’ within the ‘Deployment Method’ section.
+6. Search and connect your Github repo in the ‘Connect to Github’ section.
+7. Clicking ‘Deploy branch’ will then create your Heroku app and you can view it by clicking the ‘View’ button at the bottom of the page.
+	- Selecting ‘Enable Automatic Deploys’ will ensure that your Heroku app is updated each time you push changes from Gitpod otherwise you will have to deploy manually each time using the steps mentioned above.
+
+
+## Credits
+
+1. 
+
+
+### Other
+
+Thank you to Sandeep, my mentor, for providing assistance in this project as well as his guidance throughout the course.
