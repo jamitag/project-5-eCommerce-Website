@@ -319,7 +319,7 @@ The site was tested across several devices with varying screen sizes;
 
 **Issue 5** - Django media files not working when debug set to False.
 
-**Solution** - I discovered a [solution](https://stackoverflow.com/questions/55842323/django-media-files-doesnt-work-when-debug-false), and when I changed by block tag from {{form}} to {{form.body}}, this removed the warnings.
+**Solution** - I discovered this [solution](https://stackoverflow.com/questions/55842323/django-media-files-doesnt-work-when-debug-false), which appended the urlpatterns. This displayed my images when debug = False.
 
 ## Technologies
 
