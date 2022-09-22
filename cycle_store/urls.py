@@ -13,10 +13,9 @@ urlpatterns = [
     path("products/", include("products.urls")),
     path("order/", include("order.urls")),
     path("payment/", include("checkout.urls")),
-] 
+]
 
-# urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
 urlpatterns.append(url(f'^{MEDIA_URL.lstrip("/")}(?P<path>.*)$',
-                     mediaserve, {'document_root': MEDIA_ROOT}))
+                   mediaserve, {'document_root': MEDIA_ROOT}))
 
 handler404 = 'cycle_store.views.handler404'
