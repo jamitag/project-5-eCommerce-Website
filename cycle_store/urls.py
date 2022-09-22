@@ -1,8 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.conf import settings
+from .settings import MEDIA_URL, MEDIA_ROOT
 from django.conf.urls.static import static
 from .views import handler404
+from django.views.static import serve as mediaserve
+from django.conf.urls import url
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -13,6 +15,8 @@ urlpatterns = [
     path("payment/", include("checkout.urls")),
 ] 
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
+urlpatterns.append(url(f'^{MEDIA_URL.lstrip("/")}(?P<path>.*)$',
+                     mediaserve, {'document_root': MEDIA_ROOT}))
 
-# handler404 = 'cycle_store.views.handler404'
+handler404 = 'cycle_store.views.handler404'
