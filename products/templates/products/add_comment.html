@@ -11,7 +11,8 @@ Add Comment
 <div class="container my-5">
     <form method="POST">
         {% csrf_token %}
-        {{form}}
+        {{form.body}}
+        <br>
         <input type="submit" name="Submit">
     </form>
 </div>
