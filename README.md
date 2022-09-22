@@ -313,7 +313,11 @@ The site was tested across several devices with varying screen sizes;
 
 **Solution** - The html file itself is fine and the error seemed to be coming from the block tag pulling a Django form for my forms.py file. I found a similar issue [here](https://stackoverflow.com/questions/38634914/display-django-form-error-for-each-field-in-template-and-each-correct-data-in-te), and when I changed by block tag from {{form}} to {{form.body}}, this removed the warnings.
 
-**Issue 4** - Django media files not working when debug set to False.
+**Issue 4** - I could not access the site admin at the beginning of the project shortly after setup.
+
+**Solution** -  I found this [solution](https://stackoverflow.com/questions/16068518/django-site-matching-query-does-not-exist) and discovered that simply changing ‘site_id = 1’ ( as instructed in the CI set up video) to ‘SITE_ID=1’ fixed the issue.
+
+**Issue 5** - Django media files not working when debug set to False.
 
 **Solution** - I discovered a [solution](https://stackoverflow.com/questions/55842323/django-media-files-doesnt-work-when-debug-false), and when I changed by block tag from {{form}} to {{form.body}}, this removed the warnings.
 
@@ -350,6 +354,7 @@ The site was tested across several devices with varying screen sizes;
 - [Lucid](https://lucid.app/)
 - Creating store [logo](https://www.logo.com/)
 - GoodNotes app
+- Stripe payment
 
 ## Deployment
 
@@ -383,7 +388,9 @@ This programme was deployed using [Heroku](https://heroku.com/)
 
 4. Due to issues noted in 'issue 1', I had to find assistance with deploying app. Several links where helpful including this [tutorial](https://www.youtube.com/watch?v=V2rWvStauak) & [article](https://dev.to/thepylot/how-to-migrate-data-from-sqlite-to-postgresql-in-django-182h).
 
-5. I took my product images and descriptions from [sigma sports](https://www.sigmasports.com/).
+5. I also found this [article](https://testdriven.io/blog/django-stripe-tutorial/) helpful whwen setting up Stripe.
+
+6. I took my product images and descriptions from [sigma sports](https://www.sigmasports.com/).
 
 ### Other
 
