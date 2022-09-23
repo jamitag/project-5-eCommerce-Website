@@ -47,6 +47,12 @@ Only available to logged in users. Clicking on the username will present the use
 
 <img src="static/readme-images/site_images/navbarloggedin.png">
 
+__My Orders__
+
+User can view their order history in the My Orders section.
+
+<img src="static/readme-images/site_images/orders.png">
+
 __Categories__
 
 User have a choice to view all products or choose to select one of the product categories found in the navbar.
@@ -96,6 +102,18 @@ __Footer__
 A footer can be found at the foot of every page. This displays links to categories of products as wel as our social media links. User can also enter their email to sign up for our newsletter. Additional contact information can also be found.
 
 <img src="static/readme-images/site_images/footer.png">
+
+__Payment__
+
+User can purchase their items using the Stripe payment platform.
+
+<img src="static/readme-images/site_images/payment.png">
+
+__Payment Success__
+
+User will be directed to the 'order success' page when they purchase an item.
+
+<img src="static/readme-images/site_images/order-success.png">
 
 
 
